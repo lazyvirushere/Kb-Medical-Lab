@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages - KB Labs Medical Laboratory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    <div class="pulse-indicator"></div>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">KB Labs</span>
+                    <span class="logo-subtitle">Medical Laboratory</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="tests.html" class="nav-link">Tests</a>
+                <a href="packages.html" class="nav-link active">Packages</a>
+                <a href="locations.html" class="nav-link">Locations</a>
+                <a href="contact.html" class="nav-link">Contact us</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="auth-link">Login</a>
+                    <a href="signup.html" class="auth-btn">Sign Up</a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Health Packages</h1>
+            <p class="page-subtitle">Comprehensive health screening packages at affordable prices</p>
+        </div>
+    </section>
+
+    <!-- Packages Content -->
+    <section class="packages-content">
+        <div class="container">
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Basic Health Check</h3>
+                        <div class="package-price">
+                            <span class="price-currency">Rs.</span>
+                            <span class="price-amount">5,000</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li>Complete Blood Count (CBC)</li>
+                        <li>Lipid Profile</li>
+                        <li>Liver Function Test</li>
+                        <li>Kidney Function Test</li>
+                        <li>Diabetes Panel</li>
+                    </ul>
+                    <button class="btn btn-primary package-btn" onclick="openBookingModal('Basic Health Check', 5000, 'package')">Book Package</button>
+                </div>
+                
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h3 class="package-name">Executive Health Check</h3>
+                        <div class="package-price">
+                            <span class="price-currency">Rs.</span>
+                            <span class="price-amount">12,000</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li>All Basic Health Check tests</li>
+                        <li>Thyroid Function Test</li>
+                        <li>Cardiac Enzymes</li>
+                        <li>Vitamin D Test</li>
+                        <li>ECG</li>
+                        <li>Chest X-Ray</li>
+                        <li>Consultation with Doctor</li>
+                    </ul>
+                    <button class="btn btn-primary package-btn" onclick="openBookingModal('Executive Health Check', 12000, 'package')">Book Package</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Premium Health Check</h3>
+                        <div class="package-price">
+                            <span class="price-currency">Rs.</span>
+                            <span class="price-amount">25,000</span>
+                        </div>
+                    </div>
+                    <ul class="package-features">
+                        <li>All Executive Health Check tests</li>
+                        <li>Cancer Screening Markers</li>
+                        <li>Hormone Panel</li>
+                        <li>Ultrasound Abdomen</li>
+                        <li>Stress Test</li>
+                        <li>Bone Density Test</li>
+                        <li>Detailed Medical Report</li>
+                    </ul>
+                    <button class="btn btn-primary package-btn" onclick="openBookingModal('Premium Health Check', 25000, 'package')">Book Package</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-name">KB Labs</span>
+                            <span class="logo-subtitle">Medical Laboratory</span>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Pakistan's premier medical laboratory providing accurate, reliable, and timely diagnostic services.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="tests.html">Tests</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>03325387740</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>info@kblabs.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 KB Labs Medical Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="booking-modal" id="bookingModal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            <h2 id="modalTitle">Book Package</h2>
+            <h3 id="modalSubtitle">Basic Health Check</h3>
+            
+            <form id="bookingForm" onsubmit="handleBookingForm(this); return false;">
+                <input type="hidden" id="package_name" name="package_name">
+                <input type="hidden" id="package_amount" name="package_amount">
+                <input type="hidden" id="booking_type" name="booking_type">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patient_name">Full Name *</label>
+                        <input type="text" id="patient_name" name="patient_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient_phone">Phone Number *</label>
+                        <input type="tel" id="patient_phone" name="patient_phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="patient_email">Email Address *</label>
+                    <input type="email" id="patient_email" name="patient_email" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preferred_date">Preferred Date *</label>
+                        <input type="date" id="preferred_date" name="preferred_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferred_time">Preferred Time *</label>
+                        <select id="preferred_time" name="preferred_time" required>
+                            <option value="">Select Time</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking-storage.js"></script>
+    <script src="js/file-storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+    // Set minimum date to today
+    document.addEventListener('DOMContentLoaded', function() {
+        const today = new Date().toISOString().split('T')[0];
+        const dateInput = document.getElementById('preferred_date');
+        if (dateInput) {
+            dateInput.min = today;
+        }
+    });
+
+    // Open booking modal
+    function openBookingModal(packageName, amount, type) {
+        // Check if user is logged in
+        const userToken = localStorage.getItem('user_token');
+        if (!userToken) {
+            showNotification('Please login to book a package', 'error');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+            return;
+        }
+
+        // Store amount globally for this booking
+        window.currentBookingAmount = amount;
+        
+        // Set modal content
+        document.getElementById('modalTitle').textContent = 'Book Package';
+        document.getElementById('modalSubtitle').textContent = packageName;
+        document.getElementById('package_name').value = packageName;
+        document.getElementById('package_amount').value = amount;
+        document.getElementById('booking_type').value = type;
+
+        // Show modal
+        document.getElementById('bookingModal').classList.add('show');
+    }
+
+    // Close booking modal
+    function closeBookingModal() {
+        document.getElementById('bookingModal').classList.remove('show');
+        document.getElementById('bookingForm').reset();
+    }
+
+    // Handle booking form submission
+    async function handleBookingForm(form) {
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<span class="loading"></span> Booking...';
+        submitBtn.disabled = true;
+        
+        // Prepare booking data
+        const bookingData = {
+            package_name: formData.get('package_name'),
+            patient_name: formData.get('patient_name'),
+            patient_email: formData.get('patient_email'),
+            patient_phone: formData.get('patient_phone'),
+            preferred_date: formData.get('preferred_date'),
+            preferred_time: formData.get('preferred_time'),
+            amount: parseFloat(formData.get('package_amount'))
+        };
+
+        try {
+            // 1. Send to backend
+            const response = await fetch('php/booking_handler.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || 'Booking failed');
+            }
+
+            // 2. Save to local storage (for demo purposes)
+            const bookingWithUser = {
+                ...bookingData,
+                type: 'package',
+                user_id: localStorage.getItem('user_token') ? 'user_' + localStorage.getItem('user_token') : null,
+                booking_reference: result.booking_ref,
+                status: 'pending'
+            };
+            
+            bookingStorage.addBooking(bookingWithUser);
+            
+            // Show success
+            showNotification(`Package booked successfully! Reference: ${result.booking_ref}`, 'success');
+            closeBookingModal();
+            
+        } catch (error) {
+            console.error('Booking error:', error);
+            showNotification(error.message, 'error');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
+    }
+</script>
+</body>
+</html>

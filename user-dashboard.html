@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Booking - KB Labs Medical Laboratory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    <div class="pulse-indicator"></div>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">KB Labs</span>
+                    <span class="logo-subtitle">Medical Laboratory</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="tests.html" class="nav-link">Tests</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="locations.html" class="nav-link">Locations</a>
+                <a href="contact.html" class="nav-link">Contact us</a>
+                <div class="nav-auth">
+                    <a href="user-dashboard.html" class="auth-link active">Test Booking</a>
+                    <button onclick="logout()" class="auth-btn">Logout</button>
+                </div>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- User Test Booking -->
+    <section class="user-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Test Booking</h1>
+                <p>Welcome to your test booking section. Here you can book, view, and manage your lab tests easily.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Quick Stats -->
+                <div class="stats-section">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Bookings</h3>
+                            <p class="stat-number" id="totalBookings">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pending Tests</h3>
+                            <p class="stat-number" id="pendingBookings">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Completed</h3>
+                            <p class="stat-number" id="completedBookings">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14,2 14,8 20,8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10,9 9,9 8,9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Available Reports</h3>
+                            <p class="stat-number" id="availableReports">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings -->
+                <div class="bookings-section">
+                    <div class="section-header">
+                        <h2>My Bookings</h2>
+                        <button class="refresh-btn" onclick="loadUserData()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 2v6h-6"></path>
+                                <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+                                <path d="M3 22v-6h6"></path>
+                                <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+                            </svg>
+                            Refresh
+                        </button>
+                    </div>
+                    <div class="booking-list" id="userBookings">
+                        <!-- User bookings will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="actions-section">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <a href="tests.html" class="action-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11H5a2 2 0 0 0-2 2v3c0 1.1.9 2 2 2h2l3 3h1V8H9z"></path>
+                            </svg>
+                            Book New Test
+                        </a>
+                        <a href="packages.html" class="action-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                            View Packages
+                        </a>
+                        <a href="contact.html" class="action-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Contact Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-name">KB Labs</span>
+                            <span class="logo-subtitle">Medical Laboratory</span>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Pakistan's premier medical laboratory providing accurate, reliable, and timely diagnostic services.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="tests.html">Tests</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>03325387740</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>info@kblabs.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 KB Labs Medical Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking-storage.js"></script>
+    <script src="js/file-storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // User dashboard functionality
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('user_token');
+                localStorage.removeItem('user_name');
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Load user data
+        async function loadUserData() {
+            const bookingsContainer = document.getElementById('userBookings');
+            
+            try {
+                // Show loading state
+                bookingsContainer.innerHTML = `
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading your bookings...</p>
+                    </div>
+                `;
+
+                const response = await fetch('php/get_user_bookings.php');
+                
+                // First check if response is OK
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Server error: ${response.status} - ${errorText}`);
+                }
+
+                // Then try to parse as JSON
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.message || 'Failed to load bookings');
+                }
+
+                updateUserStats(data.bookings);
+                renderBookings(data.bookings);
+                
+            } catch (error) {
+                console.error('Fetch error:', error);
+                
+                // Show error message
+                bookingsContainer.innerHTML = `
+                    <div class="error-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <h3>Error Loading Bookings</h3>
+                        <p>${error.message}</p>
+                        <button onclick="loadUserData()" class="btn btn-primary">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function renderBookings(bookings) {
+            const container = document.getElementById('userBookings');
+            
+            if (bookings.length === 0) {
+                container.innerHTML = `
+                    <div class="no-bookings">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <h3>No Bookings Found</h3>
+                        <p>You haven't made any bookings yet.</p>
+                        <a href="tests.html" class="btn btn-primary">Book Your First Test</a>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = bookings.map(booking => `
+                <div class="booking-card">
+                    <div class="booking-header">
+                        <div class="booking-info">
+                            <h3>${booking.service_name}</h3>
+                            <p class="booking-ref">Reference: ${booking.booking_reference}</p>
+                        </div>
+                        <div class="booking-status">
+                            <span class="status-badge ${booking.status}">
+                                ${booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="label">Date:</span>
+                            <span class="value">${formatDate(booking.preferred_date)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Time:</span>
+                            <span class="value">${booking.preferred_time || 'N/A'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Status:</span>
+                            <span class="value">${booking.status}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        // Update user statistics
+        function updateUserStats(bookings) {
+            const totalBookings = bookings.length;
+            const pendingBookings = bookings.filter(b => b.status === 'pending').length;
+            const completedBookings = bookings.filter(b => b.status === 'completed').length;
+            
+            // Count available reports
+            let availableReports = 0;
+            bookings.forEach(booking => {
+                if (window.bookingStorage) {
+                    const bookingWithFiles = window.bookingStorage.getBookingWithFiles(booking.booking_reference);
+                    if (bookingWithFiles && bookingWithFiles.files) {
+                        availableReports += bookingWithFiles.files.length;
+                    }
+                }
+            });
+
+            document.getElementById('totalBookings').textContent = totalBookings;
+            document.getElementById('pendingBookings').textContent = pendingBookings;
+            document.getElementById('completedBookings').textContent = completedBookings;
+            document.getElementById('availableReports').textContent = availableReports;
+        }
+
+        // Update user bookings display
+        function updateUserBookings(bookings) {
+            const bookingsContainer = document.getElementById('userBookings');
+            
+            if (bookings.length === 0) {
+                bookingsContainer.innerHTML = `
+                    <div class="no-bookings">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <h3>No Bookings Found</h3>
+                        <p>You haven't made any bookings yet.</p>
+                        <a href="tests.html" class="btn btn-primary">Book Your First Test</a>
+                    </div>
+                `;
+            } else {
+                bookingsContainer.innerHTML = bookings.map(booking => {
+                    const bookingWithFiles = window.bookingStorage.getBookingWithFiles(booking.booking_reference);
+                    let reportsHtml = '';
+                    
+                    if (bookingWithFiles && bookingWithFiles.files && bookingWithFiles.files.length > 0) {
+                        reportsHtml = `
+                            <div class="booking-reports">
+                                <h4>Available Reports:</h4>
+                                ${bookingWithFiles.files.map(file => `
+                                    <div class="report-item">
+                                        <span class="report-name">${file.file_name}</span>
+                                        <button onclick="downloadUserReport(${file.id})" class="btn btn-small btn-primary">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7,10 12,15 17,10"></polyline>
+                                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                            </svg>
+                                            Download
+                                        </button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+                    }
+                    
+                    return `
+                        <div class="booking-card">
+                            <div class="booking-header">
+                                <div class="booking-info">
+                                    <h3>${booking.service_name}</h3>
+                                    <p class="booking-ref">Reference: ${booking.booking_reference}</p>
+                                </div>
+                                <div class="booking-status">
+                                    <span class="status-badge ${booking.status}">${capitalizeFirst(booking.status)}</span>
+                                </div>
+                            </div>
+                            <div class="booking-details">
+                                <div class="detail-item">
+                                    <span class="label">Date:</span>
+                                    <span class="value">${formatDate(booking.preferred_date)}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Time:</span>
+                                    <span class="value">${booking.preferred_time || 'N/A'}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">Created:</span>
+                                    <span class="value">${formatDateTime(booking.created_at)}</span>
+                                </div>
+                            </div>
+                            ${reportsHtml}
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Download user report
+        function downloadUserReport(fileId) {
+            if (window.fileStorage) {
+                const success = window.fileStorage.downloadFile(fileId);
+                if (success) {
+                    showNotification('Report download started!', 'success');
+                } else {
+                    showNotification('Failed to download report', 'error');
+                }
+            }
+        }
+
+        // Utility functions
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function formatDateTime(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+        });
+    </script>
+
+    <style>
+        .user-dashboard {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            min-height: 100vh;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .dashboard-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            gap: 40px;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #0066cc, #00b4a6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .stat-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .stat-content h3 {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 0 8px 0;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0066cc;
+            margin: 0;
+        }
+
+        .bookings-section, .actions-section {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .refresh-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .refresh-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .booking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .booking-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .booking-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.1);
+        }
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .booking-info h3 {
+            color: white;
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+        }
+
+        .booking-ref {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .booking-status {
+            flex-shrink: 0;
+        }
+
+        .booking-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .detail-item .label {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .detail-item .value {
+            color: white;
+            font-weight: 600;
+        }
+
+        .booking-reports {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .booking-reports h4 {
+            color: white;
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+        }
+
+        .report-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .report-item:last-child {
+            border-bottom: none;
+        }
+
+        .report-name {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: auto;
+        }
+
+        .btn-small svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .no-bookings {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .no-bookings svg {
+            width: 80px;
+            height: 80px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .no-bookings h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .no-bookings p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-badge.confirmed {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-badge.completed {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .status-badge.cancelled {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: linear-gradient(45deg, #0066cc, #00b4a6);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .action-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .booking-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</body>
+</html>

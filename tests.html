@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Tests - KB Labs Medical Laboratory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    <div class="pulse-indicator"></div>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">KB Labs</span>
+                    <span class="logo-subtitle">Medical Laboratory</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="tests.html" class="nav-link active">Tests</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="locations.html" class="nav-link">Locations</a>
+                <a href="contact.html" class="nav-link">Contact us</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="auth-link">Login</a>
+                    <a href="signup.html" class="auth-btn">Sign Up</a>
+                </div>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Medical Tests</h1>
+            <p class="page-subtitle">Comprehensive range of diagnostic tests with accurate results</p>
+        </div>
+    </section>
+
+    <!-- Tests Content -->
+    <section class="tests-content">
+        <div class="container">
+            <div class="tests-grid">
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Complete Blood Count (CBC)</div>
+                        <div class="test-price">Rs. 800</div>
+                    </div>
+                    <div class="test-description">
+                        Complete blood count including red blood cells, white blood cells, and platelets analysis.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Same Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Complete Blood Count (CBC)', 800, 'test')">
+                        Book Now
+                    </button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Lipid Profile</div>
+                        <div class="test-price">Rs. 1,200</div>
+                    </div>
+                    <div class="test-description">
+                        Comprehensive lipid panel including cholesterol, triglycerides, and HDL/LDL analysis.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Same Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Lipid Profile', 1200, 'test')">
+                        Book Now
+                    </button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Thyroid Function Test</div>
+                        <div class="test-price">Rs. 2,500</div>
+                    </div>
+                    <div class="test-description">
+                        Complete thyroid panel including T3, T4, and TSH levels for thyroid function assessment.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Next Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Thyroid Function Test', 2500, 'test')">
+                        Book Now
+                    </button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Liver Function Test</div>
+                        <div class="test-price">Rs. 1,800</div>
+                    </div>
+                    <div class="test-description">
+                        Comprehensive liver function panel including enzymes, proteins, and bilirubin levels.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Same Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Liver Function Test', 1800, 'test')">
+                        Book Now
+                    </button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Kidney Function Test</div>
+                        <div class="test-price">Rs. 1,500</div>
+                    </div>
+                    <div class="test-description">
+                        Kidney function panel including creatinine, BUN, and electrolyte analysis.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Same Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Kidney Function Test', 1500, 'test')">
+                        Book Now
+                    </button>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-header">
+                        <div class="test-name">Diabetes Panel</div>
+                        <div class="test-price">Rs. 2,000</div>
+                    </div>
+                    <div class="test-description">
+                        Comprehensive diabetes screening including fasting glucose, HbA1c, and insulin levels.
+                    </div>
+                    <div class="test-details">
+                        <div class="test-info">
+                            <span class="info-label">Sample:</span>
+                            <span class="info-value">Blood</span>
+                        </div>
+                        <div class="test-info">
+                            <span class="info-label">Result Time:</span>
+                            <span class="info-value">Same Day</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary test-btn" onclick="openBookingModal('Diabetes Panel', 2000, 'test')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-name">KB Labs</span>
+                            <span class="logo-subtitle">Medical Laboratory</span>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Pakistan's premier medical laboratory providing accurate, reliable, and timely diagnostic services.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="tests.html">Tests</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>03325387740</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>info@kblabs.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 KB Labs Medical Laboratory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="booking-modal" id="bookingModal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            <h2 id="modalTitle">Book Test</h2>
+            <h3 id="modalSubtitle">Complete Blood Count (CBC)</h3>
+            
+            <form id="bookingForm" onsubmit="event.preventDefault(); handleBookingForm(this, 'test', document.getElementById('bookingModal'))">
+                <input name="test_name" type="hidden">
+                <input name="patient_name" required>
+                <input name="patient_email" required>
+                <input name="patient_phone" required>
+                <input name="preferred_date" required>
+                <input name="preferred_time" required>
+                <textarea name="additional_notes" placeholder="Additional notes (optional)"></textarea>
+                <button type="submit" class="btn btn-primary">Book Test</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking-storage.js"></script>
+    <script src="js/file-storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('preferred_date');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+        });
+
+        // Open booking modal
+        function openBookingModal(testName, amount, type) {
+            // Check if user is logged in
+            const userToken = localStorage.getItem('user_token');
+            if (!userToken) {
+                showNotification('Please login to book a test', 'error');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+                return;
+            }
+
+            // Set modal content
+            document.getElementById('modalTitle').textContent = 'Book Test';
+            document.getElementById('modalSubtitle').textContent = testName;
+            document.getElementsByName('test_name')[0].value = testName;
+            document.getElementsByName('patient_name')[0].value = '';
+            document.getElementsByName('patient_email')[0].value = '';
+            document.getElementsByName('patient_phone')[0].value = '';
+            document.getElementsByName('preferred_date')[0].value = '';
+            document.getElementsByName('preferred_time')[0].value = '';
+            document.getElementsByName('additional_notes')[0].value = '';
+
+            // Show modal
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('show');
+        }
+
+        // Close booking modal
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('show');
+            
+            // Reset form
+            document.getElementById('bookingForm').reset();
+        }
+
+        // Handle booking form submission
+        document.getElementById('bookingForm').onsubmit = function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<span class="loading"></span> Booking...';
+            submitBtn.disabled = true;
+            
+            // Get form data
+            const bookingData = {
+                type: formData.get('booking_type'),
+                service_name: formData.get('test_name'),
+                patient_name: formData.get('patient_name'),
+                patient_email: formData.get('patient_email'),
+                patient_phone: formData.get('patient_phone'),
+                preferred_date: formData.get('preferred_date'),
+                preferred_time: formData.get('preferred_time'),
+                additional_notes: formData.get('additional_notes'),
+                user_id: localStorage.getItem('user_token') ? 'user_' + localStorage.getItem('user_token') : null,
+                amount: parseFloat(formData.get('test_amount'))
+            };
+            
+            // Simulate booking process
+            setTimeout(() => {
+                try {
+                    // Save booking to storage
+                    const newBooking = bookingStorage.addBooking(bookingData);
+                    
+                    // Show success message with booking reference
+                    showNotification(`Test booked successfully! Reference: ${newBooking.booking_reference}`, 'success');
+                    
+                    // Close modal
+                    closeBookingModal();
+                    
+                    // Reset form
+                    this.reset();
+                    
+                } catch (error) {
+                    showNotification('Booking failed. Please try again.', 'error');
+                }
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
